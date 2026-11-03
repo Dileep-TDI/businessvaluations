@@ -21,8 +21,12 @@ export const metadata: Metadata = {
   title: site.meta.title,
   description: site.meta.description,
   icons: {
-    icon: [{ url: site.images.favicon, type: "image/webp" }],
-    shortcut: site.images.favicon,
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
 };

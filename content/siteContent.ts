@@ -15,7 +15,7 @@ export const site = {
     logo: "/images/logo-white.webp",
     logoWidth: 458,
     logoHeight: 201,
-    favicon: "/favicon.webp",
+    favicon: "/favicon.ico",
     hero: "/images/hero-office.webp",
     whyUs: "/images/why-us-desk.webp",
     cta: "/images/cta-skyline.webp",
