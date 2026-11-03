@@ -103,7 +103,7 @@ export function ThemeSelect({
                   className={`flex w-full px-3.5 py-2.5 text-left text-sm transition-colors ${
                     selected
                       ? "bg-[#75bd43] text-white"
-                      : "text-ink hover:bg-[#d6f596]"
+                      : "text-ink hover:bg-[#F0FFD0]"
                   }`}
                   onClick={() => {
                     onChange(option);

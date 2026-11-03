@@ -9,7 +9,7 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id={faq.id} className="bg-paper py-20 sm:py-24">
+    <section id={faq.id} className="bg-white py-20 sm:py-24">
       <div className="section-shell">
         <div className="max-w-3xl">
           <ScrollReveal>

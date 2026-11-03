@@ -5,20 +5,21 @@
   --ink: #2d2d2d;
   --ink-soft: #3f3f3f;
   --navy: #2d2d2d;
-  --slate: #67768e;
+  --slate: #5a5a5a;
   --mist: #f0ffd0;
-  --paper: #f9fbfd;
+  --paper: #ecfeec;
   --white: #ffffff;
   --teal: #75bd43;
   --teal-deep: #5fa334;
-  --teal-soft: #d6f596;
-  --sky: #c8e6a0;
-  --gold: #d6f596;
+  --teal-soft: #f0ffd0;
+  --sky: #ecfeec;
+  --gold: #f0ffd0;
   --line: rgba(45, 45, 45, 0.12);
   --shadow: 0 22px 60px rgba(45, 45, 45, 0.18);
   --shadow-soft: 0 12px 32px rgba(45, 45, 45, 0.08);
   --background: var(--paper);
   --foreground: var(--ink);
+  --font-brand: Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
@@ -36,8 +37,8 @@
   --color-sky: var(--sky);
   --color-gold: var(--gold);
   --color-line: var(--line);
-  --font-sans: var(--font-body-family), "Segoe UI", sans-serif;
-  --font-display: var(--font-display-family), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-brand);
+  --font-display: var(--font-brand);
 }
 
 * {
@@ -51,7 +52,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body-family), "Segoe UI", sans-serif;
+  font-family: var(--font-brand);
   font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -64,8 +65,8 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-display-family), Georgia, "Times New Roman", serif;
-  font-weight: 600;
+  font-family: var(--font-brand);
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
@@ -196,9 +197,9 @@ h1.font-display {
 
 .need-item:hover .need-icon {
   transform: scale(1.08);
-  background-color: #75bd43;
+  background-color: #2d2d2d;
   color: #fff;
-  box-shadow: 0 10px 24px rgba(117, 189, 67, 0.35);
+  box-shadow: 0 12px 28px rgba(45, 45, 45, 0.28);
 }
 
 .reveal.is-visible .need-icon {

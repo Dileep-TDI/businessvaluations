@@ -5,7 +5,7 @@ export function HowItWorks() {
   const { howItWorks } = site;
 
   return (
-    <section id={howItWorks.id} className="bg-paper py-20 sm:py-24">
+    <section id={howItWorks.id} className="bg-white py-20 sm:py-24">
       <div className="section-shell">
         <ScrollReveal className="max-w-2xl">
           <h2 className="font-display text-3xl text-ink sm:text-4xl">{howItWorks.title}</h2>
