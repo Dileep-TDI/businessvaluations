@@ -90,12 +90,6 @@ function LocalEnquiryForm() {
     >
       <div className="h-1.5 bg-teal" aria-hidden="true" />
       <div className="p-4 sm:p-5">
-        <p className="mb-3 rounded-lg bg-mist px-3 py-2 text-xs leading-relaxed text-slate">
-          Portal lead form is not configured. Set{" "}
-          <code className="text-ink">NEXT_PUBLIC_PORTAL_ORIGIN</code> and{" "}
-          <code className="text-ink">NEXT_PUBLIC_LEAD_FORM_SLUG</code> — see{" "}
-          <code className="text-ink">docs/PORTAL_LEAD_FORM.md</code>.
-        </p>
         <div className="grid gap-2.5 sm:grid-cols-2">
           <label className="grid gap-1.5 text-sm font-medium text-ink sm:col-span-2">
             {fields.fullName.label}
