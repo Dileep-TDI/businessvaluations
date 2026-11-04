@@ -2,9 +2,12 @@
 
 import { FormEvent, useState } from "react";
 import { ThemeSelect } from "@/components/ThemeSelect";
+import { PortalLeadForm } from "@/components/PortalLeadForm";
 import { site } from "@/content/siteContent";
+import { getPortalLeadFormConfig } from "@/lib/portalLeadForm";
 
 const fields = site.form.fields;
+const portalConfig = getPortalLeadFormConfig();
 
 type FormState = {
   fullName: string;
@@ -24,7 +27,27 @@ const initialState: FormState = {
   description: "",
 };
 
+/**
+ * Hero enquiry form.
+ *
+ * When `NEXT_PUBLIC_PORTAL_ORIGIN` + `NEXT_PUBLIC_LEAD_FORM_SLUG` are set,
+ * renders the published Portal 360 lead form embed (leads land in CRM).
+ * Otherwise falls back to the local demo form (no API submit).
+ */
 export function EnquiryForm() {
+  if (portalConfig) {
+    return (
+      <PortalLeadForm
+        config={portalConfig}
+        className="overflow-hidden rounded-xl bg-white shadow-[var(--shadow)]"
+      />
+    );
+  }
+
+  return <LocalEnquiryForm />;
+}
+
+function LocalEnquiryForm() {
   const [values, setValues] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
 
@@ -67,6 +90,12 @@ export function EnquiryForm() {
     >
       <div className="h-1.5 bg-teal" aria-hidden="true" />
       <div className="p-4 sm:p-5">
+        <p className="mb-3 rounded-lg bg-mist px-3 py-2 text-xs leading-relaxed text-slate">
+          Portal lead form is not configured. Set{" "}
+          <code className="text-ink">NEXT_PUBLIC_PORTAL_ORIGIN</code> and{" "}
+          <code className="text-ink">NEXT_PUBLIC_LEAD_FORM_SLUG</code> — see{" "}
+          <code className="text-ink">docs/PORTAL_LEAD_FORM.md</code>.
+        </p>
         <div className="grid gap-2.5 sm:grid-cols-2">
           <label className="grid gap-1.5 text-sm font-medium text-ink sm:col-span-2">
             {fields.fullName.label}
