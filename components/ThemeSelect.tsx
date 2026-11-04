@@ -9,6 +9,9 @@ type ThemeSelectProps = {
   options: readonly string[];
   required?: boolean;
   placeholder?: string;
+  /** Show validation error only after the parent form has been submitted */
+  showError?: boolean;
+  errorMessage?: string;
   onChange: (value: string) => void;
 };
 
@@ -19,13 +22,14 @@ export function ThemeSelect({
   options,
   required = false,
   placeholder = "Select a type",
+  showError = false,
+  errorMessage = "Please select a valuation type",
   onChange,
 }: ThemeSelectProps) {
   const [open, setOpen] = useState(false);
-  const [touched, setTouched] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const listId = useId();
-  const showError = required && touched && !value;
+  const invalid = required && showError && !value;
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
@@ -56,17 +60,13 @@ export function ThemeSelect({
         type="button"
         className={`field flex items-center justify-between gap-3 text-left ${
           open ? "field-open" : ""
-        } ${showError ? "border-[#e15555]" : ""}`}
+        } ${invalid ? "border-[#e15555]" : ""}`}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-labelledby={`${listId}-label`}
         aria-controls={listId}
-        aria-invalid={showError}
-        onClick={() => {
-          setTouched(true);
-          setOpen((v) => !v);
-        }}
-        onBlur={() => setTouched(true)}
+        aria-invalid={invalid}
+        onClick={() => setOpen((v) => !v)}
       >
         <span className={value ? "text-ink" : "text-slate/70"}>{value || placeholder}</span>
         <svg
@@ -107,7 +107,6 @@ export function ThemeSelect({
                   }`}
                   onClick={() => {
                     onChange(option);
-                    setTouched(true);
                     setOpen(false);
                   }}
                 >
@@ -119,8 +118,8 @@ export function ThemeSelect({
         </ul>
       )}
 
-      {showError ? (
-        <span className="text-xs font-normal text-[#c0392b]">Please select a valuation type</span>
+      {invalid ? (
+        <span className="text-xs font-normal text-[#c0392b]">{errorMessage}</span>
       ) : null}
     </div>
   );

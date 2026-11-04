@@ -50,6 +50,7 @@ export function EnquiryForm() {
 function LocalEnquiryForm() {
   const [values, setValues] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
+  const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -57,6 +58,7 @@ function LocalEnquiryForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setAttemptedSubmit(true);
     if (!values.valuationType) return;
     setSubmitted(true);
   }
@@ -74,6 +76,7 @@ function LocalEnquiryForm() {
             onClick={() => {
               setValues(initialState);
               setSubmitted(false);
+              setAttemptedSubmit(false);
             }}
           >
             Submit another enquiry
@@ -152,6 +155,7 @@ function LocalEnquiryForm() {
             value={values.valuationType}
             options={fields.valuationType.options}
             placeholder="Select a type"
+            showError={attemptedSubmit}
             onChange={(value) => update("valuationType", value)}
           />
 
